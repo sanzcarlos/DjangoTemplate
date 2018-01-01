@@ -12,5 +12,5 @@ RUN mkdir -p /var/www/static
 WORKDIR /var/www/media
 WORKDIR /var/www/static
 
-RUN chown nginx:nginx /var/www/media
-RUN chown nginx:nginx /var/www/static
+RUN chown -R nginx:nginx /var/www/media
+RUN chown -R nginx:nginx /var/www/static
