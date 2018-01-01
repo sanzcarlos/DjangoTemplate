@@ -1,0 +1,39 @@
+version: "2"
+
+services:
+  db:
+    extends:
+      file: base.yml
+      service: db
+
+  web:
+    extends:
+      file: base.yml
+      service: web
+    build:
+      args:
+        - DJANGO_ENV=dev
+    #command: python manage.py runserver 0.0.0.0:8080
+    command: gunicorn --bind '0.0.0.0:8000'  Cisco.wsgi
+    volumes:
+      - ./webapp:/webapp
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  nginx:
+    extends:
+      file: base.yml
+      service: nginx
+    command: nginx -g 'daemon off;'
+    ports:
+      - "80:80"
+    volumes:
+      - ./Cisco/static:/var/www/static
+      - ./Cisco/media:/var/www/media
+    depends_on:
+      - web
+volumes:
+  db_data:
+    external: true
