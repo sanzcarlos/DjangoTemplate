@@ -68,6 +68,9 @@ docs/_build/
 target/
 
 # Jupyter Notebook
+
+# MacOS
+.DS_Store
 .ipynb_checkpoints
 
 # pyenv
