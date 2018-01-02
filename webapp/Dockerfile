@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM python:3.6.4-slim
 
 ARG DJANGO_ENV
 

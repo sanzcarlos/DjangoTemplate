@@ -1,4 +1,4 @@
-FROM nginx:1.13.8
+FROM nginx:1.13.8-alpine
 
 #ENV GUNICORN_LOG=/var/log/gunicorn
 
